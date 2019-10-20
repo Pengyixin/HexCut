@@ -28,26 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Openfile = new System.Windows.Forms.OpenFileDialog();
+            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
             this.Lable_FileNameText = new System.Windows.Forms.Label();
             this.TextBox_StartOffset = new System.Windows.Forms.TextBox();
             this.TextBox_Size = new System.Windows.Forms.TextBox();
-            this.Button_Save = new System.Windows.Forms.Button();
             this.Lable_Offset = new System.Windows.Forms.Label();
             this.Lable_size = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Lable_FileName = new System.Windows.Forms.Label();
             this.Lable_FileSize = new System.Windows.Forms.Label();
             this.Lable_FileSizeText = new System.Windows.Forms.Label();
+            this.SaveFile = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Openfile
+            // OpenFile
             // 
-            this.Openfile.FileName = "OpenFile";
+            this.OpenFile.FileName = "OpenFile";
             // 
             // Lable_FileNameText
             // 
@@ -75,17 +76,6 @@
             this.TextBox_Size.TabIndex = 3;
             this.TextBox_Size.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // Button_Save
-            // 
-            this.Button_Save.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Button_Save.Location = new System.Drawing.Point(320, 150);
-            this.Button_Save.Name = "Button_Save";
-            this.Button_Save.Size = new System.Drawing.Size(75, 23);
-            this.Button_Save.TabIndex = 5;
-            this.Button_Save.Text = "save";
-            this.Button_Save.UseVisualStyleBackColor = true;
-            this.Button_Save.Click += new System.EventHandler(this.Button_Save_Click);
-            // 
             // Lable_Offset
             // 
             this.Lable_Offset.AutoSize = true;
@@ -110,7 +100,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(459, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(333, 25);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -118,7 +108,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenToolStripMenuItem1,
-            this.exitToolStripMenuItem});
+            this.SaveToolStripMenuItem,
+            this.ExitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 21);
             this.fileToolStripMenuItem.Text = "file";
@@ -130,11 +121,20 @@
             this.OpenToolStripMenuItem1.Text = "Open";
             this.OpenToolStripMenuItem1.Click += new System.EventHandler(this.OpenToolStripMenuItem1_Click);
             // 
-            // exitToolStripMenuItem
+            // SaveToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.SaveToolStripMenuItem.Enabled = false;
+            this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Text = "Save";
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // Lable_FileName
             // 
@@ -170,21 +170,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(459, 200);
+            this.ClientSize = new System.Drawing.Size(333, 200);
             this.Controls.Add(this.Lable_FileSizeText);
             this.Controls.Add(this.Lable_FileSize);
             this.Controls.Add(this.Lable_FileName);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Lable_size);
             this.Controls.Add(this.Lable_Offset);
-            this.Controls.Add(this.Button_Save);
             this.Controls.Add(this.TextBox_Size);
             this.Controls.Add(this.TextBox_StartOffset);
             this.Controls.Add(this.Lable_FileNameText);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(475, 239);
-            this.MinimumSize = new System.Drawing.Size(475, 239);
             this.Name = "HexCut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HexCut";
@@ -197,20 +194,21 @@
 
         #endregion
 
-        private System.Windows.Forms.OpenFileDialog Openfile;
+        private System.Windows.Forms.OpenFileDialog OpenFile;
         private System.Windows.Forms.Label Lable_FileNameText;
         private System.Windows.Forms.TextBox TextBox_StartOffset;
         private System.Windows.Forms.TextBox TextBox_Size;
-        private System.Windows.Forms.Button Button_Save;
         private System.Windows.Forms.Label Lable_Offset;
         private System.Windows.Forms.Label Lable_size;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
         private System.Windows.Forms.Label Lable_FileName;
         private System.Windows.Forms.Label Lable_FileSize;
         private System.Windows.Forms.Label Lable_FileSizeText;
+        private System.Windows.Forms.SaveFileDialog SaveFile;
+        private System.Windows.Forms.ToolStripMenuItem SaveToolStripMenuItem;
     }
 }
 

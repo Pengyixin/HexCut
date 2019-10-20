@@ -15,26 +15,40 @@ namespace HexCut
     public partial class HexCut : Form
     {
         const int FILE_READ_SIZE = 1024 * 1024;
-        string FileName = string.Empty;
+        string OpenFileName = string.Empty;
+        string SaveFileName = string.Empty;
         public HexCut()
         {
             InitializeComponent();
         }
 
-        private void Button_Save_Click(object sender, EventArgs e)
+        private void OpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.OpenFile.ShowDialog() == DialogResult.OK)
+                OpenFileName = this.OpenFile.FileName;
+            if (OpenFileName == string.Empty)
+                return;
+            FileInfo fi = new FileInfo(OpenFileName);
+            this.Lable_FileNameText.Text = System.IO.Path.GetFileName(OpenFileName);
+            this.Lable_FileSizeText.Text = fi.Length.ToString();
+
+            this.SaveToolStripMenuItem.Enabled = true;
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             long start;
             long need_write_size;
             long file_size;
-            byte[] tmp_byte_array = new byte[FILE_READ_SIZE];
+            byte[] tmp_byte_array;
 
-            if (FileName == string.Empty)
+            if (OpenFileName == string.Empty)
             {
                 MessageBox.Show("请打开文件");
                 return;
             }
 
-            BinaryReader file_read_fp = new BinaryReader(new FileStream(FileName,
+            BinaryReader file_read_fp = new BinaryReader(new FileStream(OpenFileName,
                 FileMode.Open));
             file_size = file_read_fp.BaseStream.Length;
 
@@ -74,8 +88,12 @@ namespace HexCut
                 return;
             }
 
+            if (this.SaveFile.ShowDialog() == DialogResult.OK)
+                SaveFileName = this.SaveFile.FileName;
+            if (SaveFileName == string.Empty)
+                return;
 
-            BinaryWriter file_write_fp = new BinaryWriter(new FileStream("mydata",
+            BinaryWriter file_write_fp = new BinaryWriter(new FileStream(SaveFileName,
                 FileMode.Create));
 
             file_read_fp.BaseStream.Seek(start, SeekOrigin.Begin);
@@ -98,15 +116,9 @@ namespace HexCut
             file_write_fp.Close();
         }
 
-        private void OpenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.Openfile.ShowDialog() == DialogResult.OK)
-                FileName = this.Openfile.FileName;
-            if (FileName == string.Empty)
-                return;
-            FileInfo fi = new FileInfo(FileName);
-            this.Lable_FileNameText.Text = System.IO.Path.GetFileName(FileName);
-            this.Lable_FileSizeText.Text = fi.Length.ToString();
+            System.Environment.Exit(0);
         }
     }
 }
