@@ -1,0 +1,9 @@
+E:\vs2019\HexCutGit\HexCut\HexCut\bin\Release\HexCut.exe.config
+E:\vs2019\HexCutGit\HexCut\HexCut\bin\Release\HexCut.exe
+E:\vs2019\HexCutGit\HexCut\HexCut\bin\Release\HexCut.pdb
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.csprojAssemblyReference.cache
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.HexCut.resources
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.Properties.Resources.resources
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.csproj.GenerateResource.cache
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.exe
+E:\vs2019\HexCutGit\HexCut\HexCut\obj\Release\HexCut.pdb
