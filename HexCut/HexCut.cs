@@ -120,5 +120,23 @@ namespace HexCut
         {
             System.Environment.Exit(0);
         }
+
+        private void HexCut_DragDrop(object sender, DragEventArgs e)
+        {
+            OpenFileName = ((System.Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+            FileInfo fi = new FileInfo(OpenFileName);
+            this.Lable_FileNameText.Text = System.IO.Path.GetFileName(OpenFileName);
+            this.Lable_FileSizeText.Text = fi.Length.ToString();
+
+            this.SaveToolStripMenuItem.Enabled = true;
+
+        }
+
+        private void HexCut_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Link;
+            else e.Effect = DragDropEffects.None;
+        }
     }
 }

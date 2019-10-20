@@ -117,7 +117,7 @@
             // OpenToolStripMenuItem1
             // 
             this.OpenToolStripMenuItem1.Name = "OpenToolStripMenuItem1";
-            this.OpenToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
             this.OpenToolStripMenuItem1.Text = "Open";
             this.OpenToolStripMenuItem1.Click += new System.EventHandler(this.OpenToolStripMenuItem1_Click);
             // 
@@ -125,14 +125,14 @@
             // 
             this.SaveToolStripMenuItem.Enabled = false;
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.SaveToolStripMenuItem.Text = "Save";
             this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.ExitToolStripMenuItem.Text = "Exit";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -185,6 +185,8 @@
             this.Name = "HexCut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HexCut";
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.HexCut_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.HexCut_DragEnter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
